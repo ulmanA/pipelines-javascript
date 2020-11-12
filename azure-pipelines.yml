@@ -20,6 +20,6 @@ steps:
 #     npm run build
 #   displayName: 'npm install and build'
 
-- script: echo #############$$$$$$$$$$$$$ $BuildID
-  env:
-    BuildID: $(Build.BuildId)
+  - script: |
+      echo ${{ Build.BuildId }} # outputs initialValue
+    displayName: First variable pass
