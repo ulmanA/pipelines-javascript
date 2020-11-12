@@ -23,6 +23,15 @@ steps:
   - script: echo %%BuildNumber%% $(Build.BuildNumber)
   - script: echo %%BuildId%% $(Build.BuildId)
   - script: echo %%JobId%% $(System.JobId)
+  - script: echo %%TeamProjectId%% $(System.TeamProjectId)
+
+  # API Links
+  # Run: 
+  #   https://dev.azure.com/TLV-AIM/8d43f0fa-f691-4155-8c9f-d83a2eee7cce/_apis/pipelines/1/runs/16?api-version=6.0-preview.1
+  #
+  #  Build:
+  #    https://dev.azure.com/TLV-AIM/8d43f0fa-f691-4155-8c9f-d83a2eee7cce/_apis/build/builds/16/
+
   
 
 
