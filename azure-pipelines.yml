@@ -16,6 +16,11 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    echo "####$$$$$####  Build.BuildId: ${Build.BuildId}"
     npm install
     npm run build
+
   displayName: 'npm install and build'
+
+- script: : |
+
