@@ -11,7 +11,7 @@ jobs:
           echo %%JobId%% $(System.JobId)
           echo %%TeamProjectId%% $(System.TeamProjectId)
 
-  - job: Properties
+  - job: RestCall
     pool: server
     steps:
       - task: InvokeRESTAPI@1
