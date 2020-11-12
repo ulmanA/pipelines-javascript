@@ -21,7 +21,7 @@ steps:
 #   displayName: 'npm install and build'
 
   - script: |
-      echo ${{ BuildId }} # outputs initialValue
+      echo ${ BuildId } # outputs initialValue
     env:
       BuildId: $(Build.BuildId)
     displayName: First variable pass
