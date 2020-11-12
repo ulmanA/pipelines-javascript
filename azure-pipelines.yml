@@ -1,55 +1,29 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+jobs:
+  - job: Properties
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - script: |
+          echo %%BuildNumber%% $(Build.BuildNumber)
+          echo %%BuildId%% $(Build.BuildId)
+          echo %%DefinitionName%% $(Build.DefinitionName)
+          echo %%QueuedById%% $(Build.QueuedById)
+          echo %%JobId%% $(System.JobId)
+          echo %%TeamProjectId%% $(System.TeamProjectId)
 
-trigger:
-- master
-
-pool: server
-  # vmImage: 'ubuntu-latest'
-
-steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '10.x'
-#   displayName: 'Install Node.js'
-
-# - script: |
-#     npm install
-#     npm run build
-#   displayName: 'npm install and build'
-
-  - script: |
-      echo %%BuildNumber%% $(Build.BuildNumber)
-      echo %%BuildId%% $(Build.BuildId)
-      echo %%DefinitionName%% $(Build.DefinitionName)
-      echo %%QueuedById%% $(Build.QueuedById)
-      echo %%JobId%% $(System.JobId)
-      echo %%TeamProjectId%% $(System.TeamProjectId)
-
-
-# Invoke REST API
-# Invoke a REST API as a part of your pipeline.
-
-  - task: InvokeRESTAPI@1
-    inputs:
-      connectionType: 'ConnectedServiceName'
-      serviceConnection: 'ILTLV2218'
-      method: 'POST'
-      headers: '{Content-Type:application/json, PlanUrl: $(system.CollectionUri), ProjectId: $(system.TeamProjectId), HubName: $(system.HostType), PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId: $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId), AuthToken: $(system.AccessToken)}' 
-      body: '{}'
-      #urlSuffix: # Optional
-      #waitForCompletion: 'false' # Options: true, false
-      #successCriteria: # Optional
-
-  # API Links
-  # Run: 
-  #   https://dev.azure.com/TLV-AIM/8d43f0fa-f691-4155-8c9f-d83a2eee7cce/_apis/pipelines/1/runs/16?api-version=6.0-preview.1
-  #
-  #  Build:
-  #    https://dev.azure.com/TLV-AIM/8d43f0fa-f691-4155-8c9f-d83a2eee7cce/_apis/build/builds/16/
-
-  
-
+  - job: Properties
+    pool: server
+    steps:
+      - task: InvokeRESTAPI@1
+        inputs:
+          connectionType: ConnectedServiceName
+          serviceConnection: ILTLV2218
+          method: POST
+          headers: >-
+            {Content-Type:application/json, PlanUrl: $(system.CollectionUri),
+            ProjectId: $(system.TeamProjectId), HubName: $(system.HostType),
+            PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId:
+            $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId),
+            AuthToken: $(system.AccessToken)}
+          body: '{}'
 
