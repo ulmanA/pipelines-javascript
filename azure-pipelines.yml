@@ -20,10 +20,28 @@ steps:
 #     npm run build
 #   displayName: 'npm install and build'
 
-  - script: echo %%BuildNumber%% $(Build.BuildNumber)
-  - script: echo %%BuildId%% $(Build.BuildId)
-  - script: echo %%JobId%% $(System.JobId)
-  - script: echo %%TeamProjectId%% $(System.TeamProjectId)
+  - script: |
+      echo %%BuildNumber%% $(Build.BuildNumber)
+      echo %%BuildId%% $(Build.BuildId)
+      echo %%DefinitionName%% $(Build.DefinitionName)
+      echo %%QueuedById%% $(Build.QueuedById)
+      echo %%JobId%% $(System.JobId)
+      echo %%TeamProjectId%% $(System.TeamProjectId)
+
+
+# Invoke REST API
+# Invoke a REST API as a part of your pipeline.
+
+  - task: InvokeRESTAPI@1
+    inputs:
+      connectionType: 'ConnectedServiceName'
+      serviceConnection: 'ILTLV2218'
+      method: 'POST'
+      headers: '{Content-Type:application/json, PlanUrl: $(system.CollectionUri), ProjectId: $(system.TeamProjectId), HubName: $(system.HostType), PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId: $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId), AuthToken: $(system.AccessToken)}' 
+      body: '{}'
+      #urlSuffix: # Optional
+      #waitForCompletion: 'false' # Options: true, false
+      #successCriteria: # Optional
 
   # API Links
   # Run: 
