@@ -3,6 +3,7 @@ jobs:
     pool:
       # vmImage: ubuntu-latest
       name: "SDP-CICD-self-hosted-agents-pool"
+      demands: ProxyConexus -equals True
     steps:
       - script: |
           echo %%BuildNumber%% $(Build.BuildNumber)
