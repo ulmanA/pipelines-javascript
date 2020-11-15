@@ -1,7 +1,8 @@
 jobs:
   - job: Properties
     pool:
-      vmImage: ubuntu-latest
+      # vmImage: ubuntu-latest
+      name: "SDP-CICD-self-hosted-agents-pool"
     steps:
       - script: |
           echo %%BuildNumber%% $(Build.BuildNumber)
