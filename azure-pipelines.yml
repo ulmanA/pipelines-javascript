@@ -12,7 +12,7 @@ jobs:
           echo %%QueuedById%% $(Build.QueuedById)
           echo %%JobId%% $(System.JobId)
           echo %%TeamProjectId%% $(System.TeamProjectId)
-          curl -L -X POST 'http://iltlv2218.intl.att.com:3000/' -H 'Content-Type: application/json' --data-raw '{}'
+          curl -L -X POST 'https://iltlvd-scrum-211-34.intl.att.com:9443/' -H 'Content-Type: application/json' --data-raw '{}'
 
   - job: RestCall
     pool: server
@@ -20,7 +20,7 @@ jobs:
       - task: InvokeRESTAPI@1
         inputs:
           connectionType: ConnectedServiceName
-          serviceConnection: ILTLV2218
+          serviceConnection: iltlvd-scrum-211-34
           method: POST
           headers: >-
             {Content-Type:application/json, PlanUrl: $(system.CollectionUri),
