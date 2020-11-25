@@ -12,7 +12,7 @@ jobs:
           echo %%QueuedById%% $(Build.QueuedById)
           echo %%JobId%% $(System.JobId)
           echo %%TeamProjectId%% $(System.TeamProjectId)
-          curl -L -X POST 'https://iltlvd-scrum-211-34.intl.att.com:9443/' -H 'Content-Type: application/json' --data-raw '{}'
+          curl -L -X POST -x http://proxy.conexus.svc.local:3128 'https://iltlvd-scrum-211-34.intl.att.com:9443/' -H 'Content-Type: application/json' --data-raw '{}'
 
   # - job: RestCall
   #   pool: server
