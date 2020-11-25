@@ -14,19 +14,19 @@ jobs:
           echo %%TeamProjectId%% $(System.TeamProjectId)
           curl -L -X POST 'https://iltlvd-scrum-211-34.intl.att.com:9443/' -H 'Content-Type: application/json' --data-raw '{}'
 
-  - job: RestCall
-    pool: server
-    steps:
-      - task: InvokeRESTAPI@1
-        inputs:
-          connectionType: ConnectedServiceName
-          serviceConnection: iltlvd-scrum-211-34
-          method: POST
-          headers: >-
-            {Content-Type:application/json, PlanUrl: $(system.CollectionUri),
-            ProjectId: $(system.TeamProjectId), HubName: $(system.HostType),
-            PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId:
-            $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId),
-            AuthToken: $(system.AccessToken)}
-          body: '{}'
+  # - job: RestCall
+  #   pool: server
+  #   steps:
+  #     - task: InvokeRESTAPI@1
+  #       inputs:
+  #         connectionType: ConnectedServiceName
+  #         serviceConnection: iltlvd-scrum-211-34
+  #         method: POST
+  #         headers: >-
+  #           {Content-Type:application/json, PlanUrl: $(system.CollectionUri),
+  #           ProjectId: $(system.TeamProjectId), HubName: $(system.HostType),
+  #           PlanId: $(system.PlanId), JobId: $(system.JobId), TimelineId:
+  #           $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId),
+  #           AuthToken: $(system.AccessToken)}
+  #         body: '{}'
 
