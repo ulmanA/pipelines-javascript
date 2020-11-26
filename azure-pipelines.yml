@@ -12,7 +12,7 @@ jobs:
           echo %%QueuedById%% $(Build.QueuedById)
           echo %%JobId%% $(System.JobId)
           echo %%TeamProjectId%% $(System.TeamProjectId)
-          curl -X GET -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json'
+          curl -X GET -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json' -k
 
 # curl -L -X POST -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json' --data-raw '{}'
 
