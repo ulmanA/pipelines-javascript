@@ -5,7 +5,7 @@ jobs:
       demands: ProxyConexus -equals True
     steps:
       - script: |
-          curl -X GET -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json'
+          curl -X GET -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json' -k
 
   # - job: RestCall
   #   pool: server
