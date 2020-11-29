@@ -1,18 +1,11 @@
 jobs:
   - job: Properties
     pool:
-      vmImage: ubuntu-latest
-      # name: "SDP-CICD-self-hosted-agents-pool"
+      name: "SDP-CICD-self-hosted-agents-pool"
       demands: ProxyConexus -equals True
     steps:
       - script: |
-          echo %%BuildNumber%% $(Build.BuildNumber)
-          echo %%BuildId%% $(Build.BuildId)
-          echo %%DefinitionName%% $(Build.DefinitionName)
-          echo %%QueuedById%% $(Build.QueuedById)
-          echo %%JobId%% $(System.JobId)
-          echo %%TeamProjectId%% $(System.TeamProjectId)
-          curl -L -X POST -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json' --data-raw '{}'
+          curl -X GET -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json'
 
   # - job: RestCall
   #   pool: server
@@ -29,4 +22,12 @@ jobs:
   #           $(system.TimelineId), TaskInstanceId: $(system.TaskInstanceId),
   #           AuthToken: $(system.AccessToken)}
   #         body: '{}'
+  #
+  #
+  #          echo %%BuildNumber%% $(Build.BuildNumber)
+  #        echo %%BuildId%% $(Build.BuildId)
+  #        echo %%DefinitionName%% $(Build.DefinitionName)
+  #        echo %%QueuedById%% $(Build.QueuedById)
+  #        echo %%JobId%% $(System.JobId)
+  #        echo %%TeamProjectId%% $(System.TeamProjectId)
 
