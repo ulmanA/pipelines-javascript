@@ -5,7 +5,19 @@ jobs:
       demands: ProxyConexus -equals True
     steps:
       - script: |
-          curl -X POST -x http://proxy.conexus.svc.local:3128 https://iltlvd-scrum-211-34.intl.att.com:9443/ -H 'Content-Type: application/json' -d '{"username":"xyz","password":"xyz"}' -k
+          echo %%BuildNumber%% $(Build.BuildNumber)
+          echo %%BuildId%% $(Build.BuildId)
+          echo %%DefinitionName%% $(Build.DefinitionName)
+          echo %%QueuedById%% $(Build.QueuedById)
+          echo %%JobId%% $(System.JobId)
+          echo %%TeamProjectId%% $(System.TeamProjectId)
+
+          curl -X POST \
+            -x http://proxy.conexus.svc.local:3128 \
+            https://iltlvd-scrum-211-34.intl.att.com:9443/ \
+            -H 'Content-Type: application/json' \
+            -d '{"username":"xyz","password":"xyz"}' \
+            -k
 
 
   # - job: RestCall
@@ -25,10 +37,4 @@ jobs:
   #         body: '{}'
   #
   #
-  #          echo %%BuildNumber%% $(Build.BuildNumber)
-  #        echo %%BuildId%% $(Build.BuildId)
-  #        echo %%DefinitionName%% $(Build.DefinitionName)
-  #        echo %%QueuedById%% $(Build.QueuedById)
-  #        echo %%JobId%% $(System.JobId)
-  #        echo %%TeamProjectId%% $(System.TeamProjectId)
-
+ 
