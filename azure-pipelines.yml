@@ -5,18 +5,13 @@ jobs:
       demands: ProxyConexus -equals True
     steps:
       - script: |
-          echo %%BuildNumber%% $(Build.BuildNumber)
-          echo %%BuildId%% $(Build.BuildId)
-          echo %%DefinitionName%% $(Build.DefinitionName)
-          echo %%QueuedById%% $(Build.QueuedById)
-          echo %%JobId%% $(System.JobId)
-          echo %%TeamProjectId%% $(System.TeamProjectId)
+          echo JSON: {"organization": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}
 
           curl -X POST \
             -x http://proxy.conexus.svc.local:3128 \
             https://iltlvd-scrum-211-34.intl.att.com:9443/ \
             -H 'Content-Type: application/json' \
-            -d '{"username":"xyz","password":"xyz"}' \
+            -d '{"organization": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}' \
             -k
 
 
