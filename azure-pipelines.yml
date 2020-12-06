@@ -11,7 +11,7 @@ jobs:
             -x http://proxy.conexus.svc.local:3128 \
             https://iltlvd-scrum-211-34.intl.att.com:9443/ \
             -H 'Content-Type: application/json' \
-            -d '{"organization": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}' \
+            -d '{"teamFoundationCollectionUri": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}' \
             -k
 
 
