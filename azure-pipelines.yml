@@ -1,8 +1,9 @@
 jobs:
   - job: Properties
     pool:
-      name: "SDP-CICD-self-hosted-agents-pool"
-      demands: ProxyConexus -equals True
+#      name: "SDP-CICD-self-hosted-agents-pool"
+#      demands: ProxyConexus -equals True
+       vmImage: 'Ubuntu-16.04'
     steps:
       - script: |
           echo JSON: {"organization": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}
