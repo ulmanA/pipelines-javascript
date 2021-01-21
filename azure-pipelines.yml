@@ -7,12 +7,12 @@ jobs:
       - script: |
           echo JSON: {"organization": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}
 
-          curl -X POST \
-            -x http://proxy.conexus.svc.local:3128 \
-            https://iltlvd-scrum-211-34.intl.att.com:9443/ \
-            -H 'Content-Type: application/json' \
-            -d '{"teamFoundationCollectionUri": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}' \
-            -k
+ #         curl -X POST \
+ #           -x http://proxy.conexus.svc.local:3128 \
+ #           https://iltlvd-scrum-211-34.intl.att.com:9443/ \
+ #           -H 'Content-Type: application/json' \
+ #           -d '{"teamFoundationCollectionUri": "$(System.teamFoundationCollectionUri)","teamProjectId": "$(System.TeamProjectId)","pipelineDefinitionName": "$(Build.DefinitionName)","buildId": "$(Build.BuildId)"}' \
+ #           -k
 
 
   # - job: RestCall
